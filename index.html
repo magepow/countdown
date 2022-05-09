@@ -8,22 +8,32 @@
     </head>
     <body>
 
-        <div class="demo1 is-countdown" data-timer="12-12-2022"></div>
+        <div class="demo1" data-timer="12-12-2022"></div>
 
-        <div class="cms-countdown" data-y="2022" data-m="12" data-d="12" data-h="00" data-i="00" data-s="59"></div>
+        <div class="demo2" data-y="2022" data-m="12" data-d="12" data-h="00" data-i="00" data-s="59"></div>
+
+        <div class="demo3" data-timer="12-12-2022"
+            data-layout='<span class="box-count day"><span class="number">0</span><span class="text">Ngày</span></span><span class="box-count hrs"><span class="number">0</span><span class="text">Giờ</span></span><span class="box-count min"><span class="number">0</span><span class="text">Phút</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Giây</span></span>',
+        >
+            
+        </div>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                    $('.cms-countdown').each(function () {
-                        var $counter = $(this);
-                        var austDay = new Date($counter.data('y'), $counter.data('m') - 1, $counter.data('d'), $counter.data('h'), $counter.data('i'), $counter.data('s'));
-                        // austDay = '2022-12-12';
-                        $counter.countdown({
-                            until: austDay
-                        });        
-                    });
+                /* example 1 */
+                $('.demo1').countdown();
+                /* example 2  */
+                $('.demo2').each(function () {
+                    var $counter = $(this);
+                    var austDay = new Date($counter.data('y'), $counter.data('m') - 1, $counter.data('d'), $counter.data('h'), $counter.data('i'), $counter.data('s'));
+                    // austDay = '2022-12-12';
+                    $counter.countdown({
+                        until: austDay
+                    });        
+                });
 
-                    $('.demo1').countdown();
+                /* example 3 custom layout  */
+                $('.demo3').countdown();
             });
         </script>
 
