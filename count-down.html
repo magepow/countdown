@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>count-down element</title>
+    <script type="text/javascript" src="count-down.js" defer="defer"></script>
+    <style type="text/css">
+        .number {padding: 0 5px 0 10px;}
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h4>Example use data-timer</h4>
+            <count-down class="demo1" data-timer="75149185"></count-down>
+            <h4>Example use data-y data-m ...</h4>
+            <count-down class="demo2" data-y="2030" data-m="5" data-d="26" data-h="00" data-i="00" data-s="0"></count-down>
+            <h4>Example use private layout</h4>
+            <count-down class="demo3" data-timer="5-26-2030">
+                <span class="box-count day"><span class="number">0</span><span class="text">Ngày</span></span>
+                <span class="box-count hrs"><span class="number">0</span><span class="text">Giờ</span></span>
+                <span class="box-count min"><span class="number">0</span><span class="text">Phút</span></span>
+                <span class="box-count secs"><span class="number">0</span> <span class="text">Giây</span></span>
+            </count-down>
+           <h4>Example use private layout with attribute data</h4>
+            <count-down class="demo4" data-timer="5/26/2030"
+                data-layout='<span class="box-count day"><span class="number">0</span><span class="text">Ngày</span></span><span class="box-count hrs"><span class="number">0</span><span class="text">Giờ</span></span><span class="box-count min"><span class="number">0</span><span class="text">Phút</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Giây</span></span>',
+            >
+                
+            </count-down>    
+        </div>
+    </body>
+</html>
