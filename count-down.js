@@ -54,7 +54,7 @@ if (!customElements.get('count-down')) {
         renderTimer() {
             var data  = this.datasetToObject(this.dataset);
             if(!data.timer){
-                data.timer = new Date(data.y, data.m - 1, data.d, data.h, data.i, data.s;
+                data.timer = new Date(data.y, data.m - 1, data.d, data.h, data.i, data.s);
             }
             var gsecs = data.timer;
             if (typeof gsecs === 'string') gsecs = gsecs.replace(/-/g, '/');
