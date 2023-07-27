@@ -13,10 +13,10 @@ if (!customElements.get('count-down')) {
             document.addEventListener("DOMContentLoaded", function (event) {
                 $this.init();
             });
-            document.addEventListener("TimerUpdated", function (event) {
+            document.addEventListener("CountDownUpdated", function (event) {
                 $this.init();
             });
-            document.dispatchEvent(new CustomEvent('TimerReady', {detail:$this}));
+            document.dispatchEvent(new CustomEvent('CountDownReady', {detail:$this}));
         }
 
         uniqid(length) {
