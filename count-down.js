@@ -54,10 +54,13 @@ if (!customElements.get('count-down')) {
         renderTimer() {
             var data  = this.datasetToObject(this.dataset);
             if(!data.timer){
-                var year = Number(data.y.toString().replace("yyyy", new Date().getFullYear())),
-                    mm   = Number(data.m.toString().replace("mm", new Date().getMonth())),
-                    dd   = Number(data.d.toString().replace("dd", new Date().getDate() + 1));
-                data.timer = new Date(year, mm, dd, data.h, data.i, data.s);
+                var year = data.y ? Number(data.y.toString().replace("yyyy", new Date().getFullYear())) : new Date().getFullYear(),
+                    mm   = data.m ? Number(data.m.toString().replace("mm", new Date().getMonth())) : new Date().getMonth(),
+                    dd   = data.d ? Number(data.d.toString().replace("dd", new Date().getDate() + 1)) : new Date().getDate() + 1,
+                    hh   = data.h ? Number(data.h.toString().replace("hh", new Date().getHours())) : new Date().getHours(),
+                    ii   = data.i ? Number(data.i.toString().replace("ii", new Date().getMinutes())) : new Date().getMinutes(),
+                    ss   = data.s ? Number(data.s.toString().replace("ss", new Date().getSeconds())) : new Date().getSeconds();
+                data.timer = new Date(year, mm, dd, hh, ii, ss);
             }
             var gsecs = data.timer;
             if (typeof gsecs === 'string') gsecs = gsecs.replace(/-/g, '/');
