@@ -73,7 +73,7 @@ if (!customElements.get('count-down')) {
             if (gsecs > 0) {
                 var isLayout = this.querySelector('.min .number');
                 if (!isLayout) {
-                    this.innerHTML = this.settings.layout;
+                    this.innerHTML = data.layout ? data.layout : this.settings.layout;                                   
                 }
                 this.CountBack(gsecs);
             } else {
