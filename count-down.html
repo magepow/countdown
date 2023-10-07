@@ -6,7 +6,25 @@
     <script type="text/javascript" src="count-down.js" defer="defer"></script>
     <style type="text/css">
         .number {padding: 0 5px 0 10px;}
+        .start{
+            display: block;
+        }
+        .end{
+            display: none;
+        }
+        .the-end .start{
+            display: none;
+        }
+        .the-end .box-count {
+            display: none;
+        }
+        .the-end .end {
+            display: block;
+        }
     </style>
+    <script>
+        
+    </script>
     </head>
     <body>
         <div class="container">
@@ -14,6 +32,8 @@
             <count-down class="demo1" data-timer="75149185"></count-down>
             <h4>Example use data-y data-m ...</h4>
             <count-down class="demo2" data-y="2030" data-m="5" data-d="26" data-h="00" data-i="00" data-s="0"></count-down>
+            <h4>Example use data-y data-m ... short</h4>
+            <count-down class="demo2b" data-short="true" data-h="7"></count-down>
             <h4>Example use private layout</h4>
             <count-down class="demo3" data-timer="5-26-2030">
                 <span class="box-count day"><span class="number">0</span><span class="text">Ngày</span></span>
@@ -22,11 +42,27 @@
                 <span class="box-count secs"><span class="number">0</span> <span class="text">Giây</span></span>
             </count-down>
            <h4>Example use private layout with attribute data</h4>
-            <count-down class="demo4" data-timer="5/26/2030"
+            <count-down class="demo4" data-timer="10/8/2023"
                 data-layout='<span class="box-count day"><span class="number">0</span><span class="text">Ngày</span></span><span class="box-count hrs"><span class="number">0</span><span class="text">Giờ</span></span><span class="box-count min"><span class="number">0</span><span class="text">Phút</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Giây</span></span>',
             >
-                
-            </count-down>    
+            </count-down>
+            <h4>Example the end</h4> 
+            <count-down class="demo5" data-h="16"  data-i="19" data-s="10" data-timeout="false">
+                <span class="start">Message start</span>
+                <span class="end">Message end</span>
+                <span class="box-count day"><span class="number">0</span><span class="text">Days</span></span><span class="box-count hrs"><span class="number">0</span><span class="text">Hrs</span></span><span class="box-count min"><span class="number">0</span><span class="text">Mins</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Secs</span></span>
+            </count-down>
+            <h4>Example only countodwn end</h4> 
+            <count-down class="demo6" data-plus-min="1" data-plus-sec="100" data-timeout="false">
+                <span class="start">Message start</span>
+                <span class="end">Message end</span>
+                <span class="box-count min"><span class="number">0</span><span class="text">Mins</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Secs</span></span>
+            </count-down>
+            <count-down class="demo6" data-plus-min="1" data-timeout="false">
+                <span class="start">Message start</span>
+                <span class="end">Message end</span>
+                <span class="box-count min"><span class="number">0</span><span class="text">Mins</span></span><span class="box-count secs"><span class="number">0</span> <span class="text">Secs</span></span>
+            </count-down>
         </div>
     </body>
 </html>

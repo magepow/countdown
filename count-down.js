@@ -33,6 +33,8 @@ if (!customElements.get('count-down')) {
 
         init() {
             if (this.classList.contains("count-down-init")) return;
+            var data  = this.datasetToObject(this.dataset);
+            Object.assign(this.settings, data);
             this.classList.add('count-down-init');
             this.renderTimer();
         }
@@ -54,13 +56,20 @@ if (!customElements.get('count-down')) {
         renderTimer() {
             var data  = this.datasetToObject(this.dataset);
             if(!data.timer){
-                var year = data.y ? Number(data.y.toString().replace("yyyy", new Date().getFullYear())) : new Date().getFullYear(),
-                    mm   = data.m ? Number(data.m.toString().replace("mm", new Date().getMonth())) : new Date().getMonth(),
-                    dd   = data.d ? Number(data.d.toString().replace("dd", new Date().getDate() + 1)) : new Date().getDate() + 1,
-                    hh   = data.h ? Number(data.h.toString().replace("hh", new Date().getHours())) : 0,
-                    ii   = data.i ? Number(data.i.toString().replace("ii", new Date().getMinutes())) : 0,
-                    ss   = data.s ? Number(data.s.toString().replace("ss", new Date().getSeconds())) : 0;
-                data.timer = new Date(year, mm, dd, hh, ii, ss);
+                var date = new Date(),
+                    year = ('y' in data) ? Number(data.y.toString().replace("yyyy", date.getFullYear())) : date.getFullYear(),
+                    mm   = ('m' in data) ? Number(data.m.toString().replace("mm", date.getMonth())) : date.getMonth(),
+                    dd   = ('d' in data) ? Number(data.d.toString().replace("dd", date.getDate() + 1)) : date.getDate(),
+                    hh   = ('h' in data) ? Number(data.h.toString().replace("hh", date.getHours())) : date.getHours(),
+                    ii   = ('i' in data) ? Number(data.i.toString().replace("ii", date.getMinutes())) : date.getMinutes(),
+                    ss   = ('s' in data) ? Number(data.s.toString().replace("ss", date.getSeconds())) : date.getSeconds(),
+                    newDate = new Date(year, mm, dd, hh, ii, ss);
+
+                    if('plusHour' in data) newDate.setHours(newDate.getHours() + Number(data.plusHour));
+                    if('plusMin' in data) newDate.setMinutes(newDate.getMinutes() + Number(data.plusMin));
+                    if('plusSec' in data) newDate.setSeconds(newDate.getSeconds() + Number(data.plusSec));
+
+                data.timer = newDate;
             }
             var gsecs = data.timer;
             if (typeof gsecs === 'string') gsecs = gsecs.replace(/-/g, '/');
@@ -73,11 +82,12 @@ if (!customElements.get('count-down')) {
             if (gsecs > 0) {
                 var isLayout = this.querySelector('.min .number');
                 if (!isLayout) {
-                    this.innerHTML = data.layout ? data.layout : this.settings.layout;                                   
+                    this.innerHTML = this.settings.layout;                                   
                 }
                 this.CountBack(gsecs);
             } else {
-                this.innerHTML = this.settings.timeout;
+                this.classList.add('the-end');
+                if(this.settings.timeout) this.innerHTML = this.settings.timeout;
             }
         }
 
@@ -94,7 +104,8 @@ if (!customElements.get('count-down')) {
             var count = setInterval(function timer() {
                 if (secs < 0) {
                     clearInterval(count);
-                    $this.innerHTML = this.settings.timeout;
+                    $this.classList.add('the-end');
+                    if($this.settings.timeout) $this.innerHTML = $this.settings.timeout;
                     return;
                 }
                 var day  = $this.querySelector('.day .number'),
