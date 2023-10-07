@@ -10,13 +10,14 @@ if (!customElements.get('count-down')) {
                 timeout: '<span class="timeout">Time out!</span>',
             }
             var $this = this;
-            document.addEventListener("DOMContentLoaded", function (event) {
-                $this.init();
-            });
             document.addEventListener("CountDownUpdated", function (event) {
                 $this.init();
             });
             document.dispatchEvent(new CustomEvent('CountDownReady', {detail:$this}));
+        }
+
+        connectedCallback() {
+             this.init();
         }
 
         uniqid(length) {
