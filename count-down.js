@@ -64,7 +64,7 @@ if (!customElements.get('count-down')) {
                     hh   = ('h' in data) ? Number(data.h.toString().replace("hh", date.getHours())) : date.getHours(),
                     ii   = ('i' in data) ? Number(data.i.toString().replace("ii", date.getMinutes())) : date.getMinutes(),
                     ss   = ('s' in data) ? Number(data.s.toString().replace("ss", date.getSeconds())) : date.getSeconds(),
-                    newDate = new Date(year, mm, dd, hh, ii, ss);
+                    newDate = new Date(year, mm -1, dd, hh, ii, ss); // the month is 0-indexed
 
                     if('plusHour' in data) newDate.setHours(newDate.getHours() + Number(data.plusHour));
                     if('plusMin' in data) newDate.setMinutes(newDate.getMinutes() + Number(data.plusMin));
