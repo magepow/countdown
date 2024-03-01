@@ -59,7 +59,7 @@ if (!customElements.get('count-down')) {
             if(!data.timer){
                 var date = new Date(),
                     year = ('y' in data) ? Number(data.y.toString().replace("yyyy", date.getFullYear())) : date.getFullYear(),
-                    mm   = ('m' in data) ? Number(data.m.toString().replace("mm", date.getMonth())) : date.getMonth(),
+                    mm   = ('m' in data) ? Number(data.m.toString().replace("mm", date.getMonth() + 1)) : date.getMonth(),
                     dd   = ('d' in data) ? Number(data.d.toString().replace("dd", date.getDate() + 1)) : date.getDate(),
                     hh   = ('h' in data) ? Number(data.h.toString().replace("hh", date.getHours())) : date.getHours(),
                     ii   = ('i' in data) ? Number(data.i.toString().replace("ii", date.getMinutes())) : date.getMinutes(),
