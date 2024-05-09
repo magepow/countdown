@@ -27,7 +27,10 @@ if (!customElements.get('count-up')) {
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             self.renderCounter();
+                            self.classList.add('inView');
                             if(!data.infinite) counterObserver.unobserve(entry.target);
+                        }else{
+                            self.classList.remove('inView');
                         }
                     });
                 });

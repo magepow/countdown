@@ -5,21 +5,30 @@
     <title>count-up element</title>
     <script type="text/javascript" src="count-up.js" defer="defer"></script>
     <style type="text/css">
+        .box {
+            height: 1000px;
+            margin: 0 auto;
+        }
         count-up {
             display: block;
+            margin: 0 auto;
         }
     </style>
     </head>
     <body>
         <div class="container">
-            <count-up class="demo" data-min="7000" data-infinite="true" data-speed="1" data-step="9" data-max="10000">
-                <span class="counter"></span>
-                <span class="symbol">$</span>
-            </count-up>
-            <count-up class="demo" data-min="7000" data-infinite="false" data-step="9" data-max="10000">
-                <span class="counter"></span>
-                <span class="symbol">$</span>
-            </count-up>
+            <div class="box">
+                 <count-up class="demo" data-min="7000" data-infinite="true" data-speed="1" data-step="9" data-max="10000">
+                    <span class="counter"></span>
+                    <span class="symbol">$</span>
+                </count-up>               
+            </div>
+            <div class="box">
+                <count-up class="demo" data-min="7000" data-infinite="false" data-step="9" data-max="10000">
+                    <span class="counter"></span>
+                    <span class="symbol">$</span>
+                </count-up>                
+            </div>
         </div>
     </body>
 </html>
